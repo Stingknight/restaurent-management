@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"github.com/Stingknight/restaurentManagement/database"
-	"github.com/Stingknight/restaurentManagement/helpers"
 	"github.com/Stingknight/restaurentManagement/models"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
@@ -215,19 +214,20 @@ func toFixed(num float64,precision int) float64{
 	output := math.Pow(10,float64(precision))
 	return float64(round(num*output))/output
 }
+// typesense search
 
-func SearchFood()gin.HandlerFunc{
-	return func(ctx *gin.Context){
-		var foodName string= ctx.Param("food_name")
+// func SearchFood()gin.HandlerFunc{
+// 	return func(ctx *gin.Context){
+// 		var foodName string= ctx.Param("food_name")
 	
-		searchResults,err := helpers.SearchDocument(foodName)
-		if err!=nil{
-			log.Fatalf("Error: %v",err)
-			ctx.IndentedJSON(http.StatusBadRequest,gin.H{"error":err})
-			return
-		}
+// 		searchResults,err := helpers.SearchDocument(foodName)
+// 		if err!=nil{
+// 			log.Fatalf("Error: %v",err)
+// 			ctx.IndentedJSON(http.StatusBadRequest,gin.H{"error":err})
+// 			return
+// 		}
 		
-		ctx.IndentedJSON(http.StatusOK,*searchResults)
+// 		ctx.IndentedJSON(http.StatusOK,*searchResults)
 		
-	}
-}	
+// 	}
+// }	
