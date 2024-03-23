@@ -25,6 +25,7 @@ func main() {
 
 	router.Use(gin.Logger())
 	routes.UserRoutes(router)
+	// router for authentication
 	router.Use(middleware.Authentication())
 
 	routes.FoodRoutes(router)
