@@ -12,10 +12,6 @@ import (
 
 func main() {
 
-	
-
-	
-
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -34,7 +30,7 @@ func main() {
 	routes.OrderRoutes(router)
 	routes.OrderItemRoutes(router)
 	routes.InvoiceRoutes(router)
-
+	// running the port in 9000
 	router.Run("localhost:9000")
 
 }
