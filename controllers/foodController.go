@@ -39,7 +39,7 @@ func GetFoods() gin.HandlerFunc{
 		}
 		
 		var startIndex int = (page-1)*recordPerPage
-		startIndex,err =strconv.Atoi(ctx.Query("startIndex"))
+		startIndex,_ =strconv.Atoi(ctx.Query("startIndex"))
 
 		matchstage :=bson.D{{Key: "$match",Value: bson.D{{Key:"",Value: ""}}}}
 		groupstage :=bson.D{{Key: "$group",Value: bson.D{{Key: "_id",Value: bson.D{{Key:"_id",Value: "null"}}},{Key: "total_count",Value: bson.D{{Key: "$sum",Value: 1}}},{Key: "data",Value: bson.D{{Key: "$push",Value: "$$Root"}}}}}}
@@ -210,10 +210,13 @@ func round(num float64) int{
 	return int(num+math.Copysign(0.5, num))
 }
 
+
 func toFixed(num float64,precision int) float64{
 	output := math.Pow(10,float64(precision))
 	return float64(round(num*output))/output
 }
+
+
 // typesense search
 
 // func SearchFood()gin.HandlerFunc{
