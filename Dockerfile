@@ -16,7 +16,7 @@ COPY . .
 # Build
 RUN go build -o main .
 
-# Expose port 9040
+# Expose port 9000
 EXPOSE 9000
 
 # Run the application
