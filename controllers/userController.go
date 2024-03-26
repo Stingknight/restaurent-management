@@ -162,12 +162,12 @@ func Login() gin.HandlerFunc{
 
 	}
 }
-
+// hash-password
 func Hashpassword(password string)string{
 	hashed_password,_ := bcrypt.GenerateFromPassword([]byte(password),0)
 	return string(hashed_password)
 }
-
+// verify hasing password
 func VerifyPassword(hashPassword string,password string)(bool,string){
 	err := bcrypt.CompareHashAndPassword([]byte(hashPassword),[]byte(password))
 
